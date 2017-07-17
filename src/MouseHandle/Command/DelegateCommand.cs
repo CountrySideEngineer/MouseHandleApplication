@@ -15,7 +15,7 @@ namespace HandleApplication.Command
         #region Private fields and constants
         private readonly Action execute;
         private readonly Action<object> executeObj;
-        private readonly Func<bool> canExecute;
+        private readonly Predicate<object> canExecute;
         #endregion
         event EventHandler ICommand.CanExecuteChanged
         {
@@ -56,7 +56,8 @@ namespace HandleApplication.Command
         }
 
         #region Constructors and the Finalizer
-        public DelegateCommand(Action<object> executeObj, Func<bool> canExecute)
+        public DelegateCommand(Action<object> executeObj) : this(executeObj, null) { }
+        public DelegateCommand(Action<object> executeObj, Predicate<object> canExecute)
         {
             if (executeObj == null)
             {
@@ -69,7 +70,8 @@ namespace HandleApplication.Command
             this.executeObj = executeObj;
             this.canExecute = canExecute;
         }
-        public DelegateCommand(Action execute, Func<bool> canExecute)
+        public DelegateCommand(Action execute) : this(execute, null) { }
+        public DelegateCommand(Action execute, Predicate<object> canExecute)
         {
             if (execute == null)
             {
@@ -89,7 +91,7 @@ namespace HandleApplication.Command
     {
         #region Private fields and constants
         private readonly Action<T> execute;
-        private readonly Func<bool> canExecute;
+        private readonly Predicate<object> canExecute;
         #endregion
         event EventHandler ICommand.CanExecuteChanged
         {
@@ -110,7 +112,7 @@ namespace HandleApplication.Command
         /// </returns>
         public bool CanExecute(object parameter)
         {
-            return true;
+            return this.canExecute == null ? true : this.canExecute(parameter);
         }
 
         /// <summary>
@@ -123,8 +125,12 @@ namespace HandleApplication.Command
         }
 
         #region Constructors and the Finalizer
-        public DelegateCommand(Action<T> execute, Func<bool> canExecute)
+        public DelegateCommand(Action<T> execute, Predicate<object> canExecute)
         {
+            if (execute == null)
+            {
+                throw new ArgumentNullException("execute");
+            }
             this.execute = execute;
             this.canExecute = canExecute;
         }

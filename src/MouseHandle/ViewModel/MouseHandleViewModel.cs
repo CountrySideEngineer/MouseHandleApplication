@@ -70,8 +70,7 @@ namespace HandleApplication.ViewModel
                 {
                     this.mousePosCommand =
                         new DelegateCommand<Point>(
-                            this.MousePosCommandExecute, 
-                            this.CanMousePosMoveCommandExecute);
+                            this.MousePosCommandExecute, null);
                 }
                 return this.mousePosCommand;
             }
@@ -92,10 +91,7 @@ namespace HandleApplication.ViewModel
         /// *This function always returns true.
         /// </summary>
         /// <returns>Always returns true.</returns>
-        public bool CanMousePosMoveCommandExecute()
-        {
-            return true;
-        }
+        public bool CanMousePosMoveCommandExecute() { return true; }
         #endregion
 
     }
