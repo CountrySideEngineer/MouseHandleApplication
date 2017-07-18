@@ -29,7 +29,7 @@
                 HorizontalAlignment="Stretch">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseMove">
-                    <cmd:MouseCoordinatesAction Command="{Binding Path=MousePosCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type v:MouseHandleView}}}" />
+                    <cmd:MouseCoordinatesAction Command="{Binding Path=MousePosCommand}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <Grid Height="Auto"
@@ -56,7 +56,7 @@
                 <TextBox x:Name="XAxisValue"
                          Grid.Column="1"
                          Grid.Row="0"
-                         HorizontalAlignment="Stretch"
+                         HorizontalAlignment="Right"
                          VerticalAlignment="Stretch"
                          HorizontalContentAlignment="Right"
                          BorderThickness="0"
@@ -76,7 +76,7 @@
                 <TextBox x:Name="YAxisValue"
                          Grid.Column="1"
                          Grid.Row="1"
-                         HorizontalAlignment="Stretch"
+                         HorizontalAlignment="Right"
                          VerticalAlignment="Stretch"
                          HorizontalContentAlignment="Right"
                          BorderThickness="0"
