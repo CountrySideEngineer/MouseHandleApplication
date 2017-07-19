@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="View\MouseHandleView.xaml.cs">
       <DependentUpon>MouseHandleView.xaml</DependentUpon>
     </Compile>

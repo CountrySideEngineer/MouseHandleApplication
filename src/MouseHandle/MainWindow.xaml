@@ -10,7 +10,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="348" Width="329">
     <Window.DataContext>
-        <vm:MouseHandleViewModel/>
+        <vm:MainViewModel/>
     </Window.DataContext>
-    <v:MouseHandleView x:Name="MouseHandleView" />
+    <v:MouseHandleView x:Name="MouseHandleView"
+                       DataContext="{Binding MouseHandleVM}" />
 </Window>
