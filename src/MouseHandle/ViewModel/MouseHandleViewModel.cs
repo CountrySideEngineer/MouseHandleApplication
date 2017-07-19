@@ -154,9 +154,7 @@ namespace HandleApplication.ViewModel
 
         public void MouseLeftButtonPushCommandExecute(Point Pos) { this.IsPush = true; }
         public void MouseLeftButtonReleaseCommandExecute(Point Pos) { this.IsPush = false; }
-        public void MouseCursorOffCommandExecute(Point Pos) {
-            this.IsPush = false;
-        }
+        public void MouseCursorOffCommandExecute(Point Pos) { this.IsPush = false; }
 
         /// <summary>
         /// Returns whether the command can execute or not.
