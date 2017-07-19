@@ -22,6 +22,7 @@ namespace HandleApplication.ViewModel
         private int yPos;
 
         private bool isPush;
+        private bool onCursor;
         #endregion
 
         #region Constructors and the Finalizer
@@ -72,7 +73,20 @@ namespace HandleApplication.ViewModel
             }
         }
 
+        public bool OnCursor
+        {
+            get { return this.onCursor; }
+            set
+            {
+                this.onCursor = value;
+                this.RaisePropertyChanged("OnCursor");
+
+                this.CursorState = (value == true) ? "TRUE" : "FALSE";
+            }
+        }
+
         public string PushState { get; private set; }
+        public string CursorState { get; private set; }
 
         /// <summary>
         /// Defines a command, MousePosCommand.
@@ -126,6 +140,21 @@ namespace HandleApplication.ViewModel
             }
         }
 
+        protected ICommand mouseCursorOnCommand;
+        public ICommand MouseCursorOnCommand
+        {
+            get
+            {
+                if (this.mouseCursorOnCommand == null)
+                {
+                    this.mouseCursorOnCommand =
+                        new DelegateCommand<Point>(this.MouseCursorOnCommandExecute, null);
+                }
+                return this.mouseCursorOnCommand;
+            }
+        }
+
+
         /// <summary>
         /// Defines a command Mouse
         /// </summary>
@@ -154,7 +183,12 @@ namespace HandleApplication.ViewModel
 
         public void MouseLeftButtonPushCommandExecute(Point Pos) { this.IsPush = true; }
         public void MouseLeftButtonReleaseCommandExecute(Point Pos) { this.IsPush = false; }
-        public void MouseCursorOffCommandExecute(Point Pos) { this.IsPush = false; }
+        public void MouseCursorOffCommandExecute(Point Pos)
+        {
+            this.IsPush = false;
+            this.OnCursor = false;
+        }
+        public void MouseCursorOnCommandExecute(Point Pos) { this.OnCursor = true; }
 
         /// <summary>
         /// Returns whether the command can execute or not.

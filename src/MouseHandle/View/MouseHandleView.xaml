@@ -40,6 +40,9 @@
                 <i:EventTrigger EventName="MouseLeave">
                     <cmd:MouseCoordinatesAction Command="{Binding Path=MouseCursorOffCommand}" />
                 </i:EventTrigger>
+                <i:EventTrigger EventName="MouseEnter">
+                    <cmd:MouseCoordinatesAction Command="{Binding Path=MouseCursorOnCommand}" />
+                </i:EventTrigger>
             </i:Interaction.Triggers>
             <Grid Height="Auto"
                   VerticalAlignment="Stretch"
@@ -49,6 +52,7 @@
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
@@ -112,6 +116,26 @@
                          BorderThickness="0"
                          Background="Transparent"
                          Text="{Binding IsPush}"
+                         TextAlignment="Center"/>
+                <TextBox x:Name="OnCursorLabel"
+                         Grid.Column="3"
+                         Grid.Row="0"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch"
+                         HorizontalContentAlignment="Center"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         Text="CURSOR:"
+                         TextAlignment="Center"/>
+                <TextBox x:Name="OnCursorValue"
+                         Grid.Column="3"
+                         Grid.Row="1"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch"
+                         HorizontalContentAlignment="Center"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         Text="{Binding OnCursor}"
                          TextAlignment="Center"/>
             </Grid>
         </Canvas>
