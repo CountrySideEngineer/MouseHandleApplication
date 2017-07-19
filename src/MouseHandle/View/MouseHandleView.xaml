@@ -31,11 +31,21 @@
                 <i:EventTrigger EventName="MouseMove">
                     <cmd:MouseCoordinatesAction Command="{Binding Path=MousePosCommand}" />
                 </i:EventTrigger>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <cmd:MouseCoordinatesAction Command="{Binding Path=MouseLeftButtonPushCommand}" />
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseLeftButtonUp">
+                    <cmd:MouseCoordinatesAction Command="{Binding Path=MouseLeftButtonReleaseCommand}" />
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseLeave">
+                    <cmd:MouseCoordinatesAction Command="{Binding Path=MouseCursorOffCommand}" />
+                </i:EventTrigger>
             </i:Interaction.Triggers>
             <Grid Height="Auto"
                   VerticalAlignment="Stretch"
                   HorizontalAlignment="Stretch" >
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
@@ -82,6 +92,26 @@
                          BorderThickness="0"
                          Background="Transparent"
                          Text="{Binding YPos}"
+                         TextAlignment="Center"/>
+                <TextBox x:Name="IsPushLabel"
+                         Grid.Column="0"
+                         Grid.Row="3"
+                         HorizontalAlignment="Right"
+                         VerticalAlignment="Stretch"
+                         HorizontalContentAlignment="Right"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         Text="PUSH:"
+                         TextAlignment="Center"/>
+                <TextBox x:Name="IsPushValue"
+                         Grid.Column="1"
+                         Grid.Row="3"
+                         HorizontalAlignment="Right"
+                         VerticalAlignment="Stretch"
+                         HorizontalContentAlignment="Right"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         Text="{Binding IsPush}"
                          TextAlignment="Center"/>
             </Grid>
         </Canvas>
