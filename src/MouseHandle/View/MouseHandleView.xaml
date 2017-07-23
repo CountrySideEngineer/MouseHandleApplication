@@ -34,16 +34,10 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Border x:Name="CanvasBorder"
+            <Canvas 
+                x:Name="MainCanvas"
                 Grid.Column="2" Grid.ColumnSpan="4"
                 Grid.Row="2" Grid.RowSpan="4"
-                Margin="0,0,0,0"
-                BorderBrush="Black"
-                BorderThickness="1"
-                VerticalAlignment="Stretch"
-                HorizontalAlignment="Stretch">
-            <Canvas Margin="0,0,0,0"
-                x:Name="MainCanvas"
                 Height="Auto"
                 Width="Auto"
                 Background="White"
@@ -66,7 +60,29 @@
                         <cmd:MouseCoordinatesAction Command="{Binding Path=MouseCursorOnCommand}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
+                <!-- X and Y axis -->
+                <Line  Stroke="Black" StrokeThickness="1"
+                       X1="80" X2="80" Y1="0" Y2="160"
+                       Height="160"
+                       Width="80"
+                       StrokeDashArray="3 3" />
+                <Line  Stroke="Black" StrokeThickness="1"
+                       X1="0" X2="160" Y1="80" Y2="80"
+                       Height="80"
+                       Width="160"
+                       StrokeDashArray="3 3"/>
+                <Ellipse Width="4" Height="4"
+                         Canvas.Top="78" Canvas.Left="78"
+                         Fill="Black" />
             </Canvas>
+        <Border x:Name="CanvasBorder"
+                Grid.Column="2" Grid.ColumnSpan="4"
+                Grid.Row="2" Grid.RowSpan="4"
+                Margin="0,0,0,0"
+                BorderBrush="Black"
+                BorderThickness="1"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch">
         </Border>
         <Grid Grid.Column="0" Grid.ColumnSpan="3"
               Grid.Row="0" Grid.RowSpan="2">
@@ -99,6 +115,7 @@
                      HorizontalAlignment="Stretch"
                      VerticalAlignment="Stretch"
                      HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"
                      BorderThickness="0"
                      Background="Transparent"
                      FontSize="9"
@@ -122,6 +139,7 @@
                      HorizontalAlignment="Stretch"
                      VerticalAlignment="Stretch"
                      HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"
                      BorderThickness="0"
                      Background="Transparent"
                      FontSize="9"
@@ -145,6 +163,7 @@
                      HorizontalAlignment="Stretch"
                      VerticalAlignment="Stretch"
                      HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
                      BorderThickness="0"
                      Background="Transparent"
                      FontSize="9"
@@ -168,6 +187,7 @@
                      HorizontalAlignment="Stretch"
                      VerticalAlignment="Stretch"
                      HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"
                      BorderThickness="0"
                      Background="Transparent"
                      FontSize="9"
@@ -205,6 +225,7 @@
                      HorizontalAlignment="Stretch"
                      VerticalAlignment="Stretch"
                      HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"
                      BorderThickness="0"
                      Background="Transparent"
                      FontSize="9"
@@ -228,6 +249,7 @@
                      HorizontalAlignment="Stretch"
                      VerticalAlignment="Stretch"
                      HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center"
                      BorderThickness="0"
                      Background="Transparent"
                      FontSize="9"
