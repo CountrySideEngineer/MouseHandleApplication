@@ -212,8 +212,18 @@ namespace HandleApplication.ViewModel
         /// Body of command.
         /// </summary>
         /// <param name="Pos">Point of mouse cursor on Canvas object.</param>
-        public void MouseLeftButtonPushCommandExecute(Point Pos) { this.IsPush = true; }
-        public void MouseLeftButtonReleaseCommandExecute(Point Pos) { this.IsPush = false; }
+        public void MouseLeftButtonPushCommandExecute(Point Pos)
+        {
+            this.IsPush = true;
+
+            this.UpdatePos(Pos);
+        }
+        public void MouseLeftButtonReleaseCommandExecute(Point Pos)
+        {
+            this.IsPush = false;
+
+            this.UpdatePos(Pos);
+        }
         public void MouseCursorOffCommandExecute(Point Pos)
         {
             this.IsPush = false;
