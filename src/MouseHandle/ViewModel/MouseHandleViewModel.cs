@@ -20,6 +20,8 @@ namespace HandleApplication.ViewModel
         /// </summary>
         private int xPos;
         private int yPos;
+        private int xPosOn;
+        private int yPosOn;
 
         private bool isPush;
         private bool onCursor;
@@ -58,6 +60,32 @@ namespace HandleApplication.ViewModel
             {
                 this.yPos = value;
                 this.RaisePropertyChanged("YPos");
+            }
+        }
+
+        /// <summary>
+        /// Accessor to XPosOn, X position of mouse while the mouse left button on.
+        /// </summary>
+        public int XPosOn
+        {
+            get { return this.xPosOn; }
+            set
+            {
+                this.xPosOn = value;
+                this.RaisePropertyChanged("XPosOn");
+            }
+        }
+
+        /// <summary>
+        /// Accessor to YPosOn, Y position of mouse while the mouse left button on.
+        /// </summary>
+        public int YPosOn
+        {
+            get { return this.yPosOn; }
+            set
+            {
+                this.yPosOn = value;
+                this.RaisePropertyChanged("YPosOn");
             }
         }
 
@@ -177,16 +205,21 @@ namespace HandleApplication.ViewModel
         /// <param name="Pos">Point of mouse cursor on Canvas object.</param>
         public void MousePosCommandExecute(Point Pos)
         {
-            this.XPos = Convert.ToInt32(Pos.X);
-            this.YPos = Convert.ToInt32(Pos.Y);
+            this.UpdatePos(Pos);
         }
 
+        /// <summary>
+        /// Body of command.
+        /// </summary>
+        /// <param name="Pos">Point of mouse cursor on Canvas object.</param>
         public void MouseLeftButtonPushCommandExecute(Point Pos) { this.IsPush = true; }
         public void MouseLeftButtonReleaseCommandExecute(Point Pos) { this.IsPush = false; }
         public void MouseCursorOffCommandExecute(Point Pos)
         {
             this.IsPush = false;
             this.OnCursor = false;
+
+            this.UpdatePos(Pos);
         }
         public void MouseCursorOnCommandExecute(Point Pos) { this.OnCursor = true; }
 
@@ -196,6 +229,26 @@ namespace HandleApplication.ViewModel
         /// </summary>
         /// <returns>Always returns true.</returns>
         public bool CanMousePosMoveCommandExecute() { return true; }
+
+        /// <summary>
+        /// Update mouse cursor position.
+        /// </summary>
+        /// <param name="Pos">Point of mouse cursor on Canvas object.</param>
+        public void UpdatePos(Point Pos)
+        {
+            this.XPos = Convert.ToInt32(Pos.X);
+            this.YPos = Convert.ToInt32(Pos.Y);
+            if (this.IsPush)
+            {
+                this.XPosOn = Convert.ToInt32(Pos.X);
+                this.YPosOn = Convert.ToInt32(Pos.Y);
+            }
+            else
+            {
+                this.XPosOn = 0;
+                this.YPosOn = 0;
+            }
+        }
         #endregion
 
     }
